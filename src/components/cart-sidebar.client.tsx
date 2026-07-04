@@ -23,11 +23,11 @@ export default function CartSidebar() {
     <>
       <div
         className={clsx(
-          "fixed top-0 right-0 h-full w-full sm:w-[400px] bg-surface z-[100] border-l-[4px] border-[#222222] transition-transform duration-300 ease-in-out flex flex-col shadow-[-8px_0px_0px_0px_rgba(34,34,34,0.1)]",
+          "fixed top-0 right-0 h-full w-full sm:w-[400px] bg-surface z-100 border-l-4 border-[#222222] transition-transform duration-300 ease-in-out flex flex-col shadow-[-8px_0px_0px_0px_rgba(34,34,34,0.1)]",
           isSidebarOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
-        <div className="bg-primary-fixed border-b-[4px] border-[#222222] p-4 flex justify-between items-center">
+        <div className="bg-primary-fixed border-b-4 border-[#222222] p-4 flex justify-between items-center">
           <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-on-primary-fixed flex items-center gap-2">
             <span className="material-symbols-outlined text-[32px]">
               shopping_cart
@@ -42,7 +42,7 @@ export default function CartSidebar() {
           </button>
         </div>
 
-        <div className="flex-grow p-4 overflow-y-auto flex flex-col gap-3">
+        <div className="grow p-4 overflow-y-auto flex flex-col gap-3">
           {items.length === 0 ? (
             <div className="text-center font-body-md text-body-md text-on-surface-variant mt-10">
               Your cart is empty. <br /> Select stages to play!
@@ -74,7 +74,7 @@ export default function CartSidebar() {
           )}
         </div>
 
-        <div className="bg-surface-container-high border-t-[4px] border-[#222222] p-6 flex flex-col gap-4">
+        <div className="bg-surface-container-high border-t-4 border-[#222222] p-6 flex flex-col gap-4">
           <div className="flex justify-between font-body-md text-body-md">
             <span>Subtotal</span>
             <span>₹{total}</span>
@@ -85,7 +85,7 @@ export default function CartSidebar() {
               <span className="material-symbols-outlined text-tertiary">
                 local_offer
               </span>
-              <div className="flex flex-col flex-grow">
+              <div className="flex flex-col grow">
                 <span className="font-label-bold text-label-bold text-on-tertiary-fixed">
                   {discountPercent}% Multi-Game Discount!
                 </span>
@@ -96,7 +96,7 @@ export default function CartSidebar() {
             </div>
           )}
 
-          <div className="flex justify-between font-headline-lg-mobile text-headline-lg-mobile mt-2 pt-4 border-t-[2px] border-dashed border-[#222222]">
+          <div className="flex justify-between font-headline-lg-mobile text-headline-lg-mobile mt-2 pt-4 border-t-2 border-dashed border-[#222222]">
             <span>Total</span>
             <span className="text-primary">₹{finalTotal}</span>
           </div>
@@ -113,7 +113,7 @@ export default function CartSidebar() {
 
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-[90] backdrop-blur-sm transition-opacity"
+          className="fixed inset-0 bg-black/50 z-90 backdrop-blur-sm transition-opacity"
           onClick={() => setSidebarOpen(false)}
         />
       )}

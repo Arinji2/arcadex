@@ -18,7 +18,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="w-full top-0 sticky border-b-[4px] border-[#222222] shadow-[0px_4px_0px_0px_rgba(186,26,26,1)] bg-surface dark:bg-surface-dim z-50">
+    <header className="w-full top-0 sticky border-b-4 border-[#222222] shadow-[0px_4px_0px_0px_rgba(186,26,26,1)] bg-surface dark:bg-surface-dim z-50">
       <div
         className={clsx(
           "flex items-center w-full px-container-margin h-20 max-w-7xl mx-auto",

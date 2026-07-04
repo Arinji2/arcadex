@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t-[8px] border-[#222222] bg-on-background flex flex-col md:flex-row justify-between items-center px-container-margin py-10 gap-4 mt-auto">
-      <div className="text-primary font-headline-xl text-headline-xl uppercase tracking-tighter">
+    <footer className="mt-auto flex w-full flex-col items-center justify-between gap-4 border-[#222222] border-t-8 bg-on-background px-container-margin py-10 md:flex-row">
+      <div className="font-headline-xl text-headline-xl text-primary uppercase tracking-tighter">
         ArcadeX
       </div>
       <div className="font-body-sm text-body-sm text-surface-container-highest">
@@ -11,19 +11,19 @@ export default function Footer() {
       </div>
       <nav className="flex flex-wrap justify-center gap-6 font-label-bold text-label-bold">
         <Link
-          className="text-surface-variant hover:text-primary-fixed-dim hover:scale-105 transition-all duration-200"
+          className="text-surface-variant transition-all duration-200 hover:scale-105 hover:text-primary-fixed-dim"
           href="#"
         >
           Privacy Warp
         </Link>
         <Link
-          className="text-surface-variant hover:text-primary-fixed-dim hover:scale-105 transition-all duration-200"
+          className="text-surface-variant transition-all duration-200 hover:scale-105 hover:text-primary-fixed-dim"
           href="/rules"
         >
           Terms of Play
         </Link>
         <Link
-          className="text-surface-variant hover:text-primary-fixed-dim hover:scale-105 transition-all duration-200"
+          className="text-surface-variant transition-all duration-200 hover:scale-105 hover:text-primary-fixed-dim"
           href="#"
         >
           Contact Luigi
