@@ -24,9 +24,18 @@
 
     "rules": {
       "nursery": {
-        "useSortedClasses": "error"
+        "useSortedClasses": {
+          "level": "error",
+          "fix": "safe"
+        }
       },
       "recommended": true,
+      "correctness": {
+        "noUnusedImports": {
+          "level": "error",
+          "fix": "safe"
+        }
+      },
       "suspicious": {
         "noUnknownAtRules": "off"
       }
