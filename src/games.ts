@@ -1,0 +1,60 @@
+import type { GameItem } from "./context/CartContext";
+
+export const GAMES: GameItem[] = [
+  {
+    id: "g1",
+    title: "Fall Guys",
+    price: 60,
+    date: "July 19",
+    time: "4 PM - 5 PM",
+    image: "/games/fall-guys.jpg",
+  },
+  {
+    id: "g2",
+    title: "Deadshot.IO",
+    price: 60,
+    date: "July 20",
+    time: "4 PM - 5 PM",
+    image: "/games/deadshot-io.jpg",
+  },
+  {
+    id: "g3",
+    title: "UNO",
+    price: 60,
+    date: "July 21",
+    time: "4 PM - 5 PM",
+    image: "/games/uno.jpg",
+  },
+  {
+    id: "g4",
+    title: "Mini Militia",
+    price: 60,
+    date: "July 22",
+    time: "4 PM - 5 PM",
+    image: "/games/mini-militia.jpg",
+  },
+  {
+    id: "g5",
+    title: "Minecraft",
+    price: 60,
+    date: "July 23",
+    time: "4 PM - 5 PM",
+    image: "/games/minecraft.jpg",
+  },
+  {
+    id: "g6",
+    title: "Chess",
+    price: 60,
+    date: "July 24",
+    time: "4 PM - 5 PM",
+    image: "/games/chess.jpg",
+  },
+  {
+    id: "g7",
+    title: "BGMI",
+    price: 60,
+    date: "July 25",
+    time: "4 PM - 5 PM",
+    image: "/games/bgmi.jpg",
+  },
+];
