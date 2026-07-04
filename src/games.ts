@@ -40,6 +40,11 @@ export const GAMES: GameItem[] = [
     date: "July 23",
     time: "4 PM - 5 PM",
     image: "/games/minecraft.jpg",
+    details: [
+      "Parkour Map",
+      "TLauncher Supported",
+      "Bedrock Edition Supported (Windows, Android, IOS)",
+    ],
   },
   {
     id: "g6",
@@ -56,5 +61,6 @@ export const GAMES: GameItem[] = [
     date: "July 25",
     time: "4 PM - 5 PM",
     image: "/games/bgmi.jpg",
+    details: ["Battle Royale - Erangel"],
   },
 ];

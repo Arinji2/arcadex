@@ -10,6 +10,7 @@ export type GameItem = {
   date: string;
   time: string;
   image: string;
+  details?: string[];
 };
 
 interface CartContextType {
