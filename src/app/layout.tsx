@@ -35,12 +35,12 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${plusJakarta.variable} ${rubik.variable} bg-background text-on-surface font-body-md antialiased overflow-x-hidden flex flex-col min-h-screen`}
+        className={`${plusJakarta.variable} ${rubik.variable} flex min-h-screen flex-col overflow-x-hidden bg-background font-body-md text-on-surface antialiased`}
       >
         <CartProvider>
           <Navbar />
           <CartSidebar />
-          <main className="grow flex flex-col">{children}</main>
+          <main className="flex grow flex-col">{children}</main>
           <Footer />
         </CartProvider>
       </body>
