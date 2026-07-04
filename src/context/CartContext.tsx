@@ -20,18 +20,22 @@ interface CartContextType {
   setSidebarOpen: (isOpen: boolean) => void;
   total: number;
   clearCart: () => void;
+  jiggle: boolean;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [items, setItems] = useState<GameItem[]>([]);
+  const [jiggle, setJiggle] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const addToCart = (item: GameItem) => {
     if (!items.find((i) => i.id === item.id)) {
-      setItems([...items, item]);
-      setSidebarOpen(true);
+      setItems((prev) => [...prev, item]);
+
+      setJiggle(true);
+      setTimeout(() => setJiggle(false), 500);
     }
   };
 
@@ -53,6 +57,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         setSidebarOpen,
         total,
         clearCart,
+        jiggle,
       }}
     >
       {children}

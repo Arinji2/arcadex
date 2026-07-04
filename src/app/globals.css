@@ -138,3 +138,32 @@ body {
   transform: translate(4px, 4px);
   box-shadow: none;
 }
+
+@keyframes cart-jiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(-10deg) scale(1.05);
+  }
+  30% {
+    transform: rotate(10deg) scale(1.05);
+  }
+  45% {
+    transform: rotate(-8deg);
+  }
+  60% {
+    transform: rotate(8deg);
+  }
+  75% {
+    transform: rotate(-4deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-cart-jiggle {
+  animation: cart-jiggle 450ms ease;
+  transform-origin: center;
+}
