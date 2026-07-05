@@ -8,6 +8,7 @@ export const GAMES: GameItem[] = [
     date: "July 19",
     time: "4 PM - 5 PM",
     image: "/games/fall-guys.jpg",
+    ignRequired: true,
   },
   {
     id: "g2",
@@ -16,6 +17,7 @@ export const GAMES: GameItem[] = [
     date: "July 20",
     time: "4 PM - 5 PM",
     image: "/games/deadshot-io.jpg",
+    ignRequired: true,
   },
   {
     id: "g3",
@@ -24,6 +26,7 @@ export const GAMES: GameItem[] = [
     date: "July 21",
     time: "4 PM - 5 PM",
     image: "/games/uno.jpg",
+    ignRequired: true,
   },
   {
     id: "g4",
@@ -32,6 +35,7 @@ export const GAMES: GameItem[] = [
     date: "July 22",
     time: "4 PM - 5 PM",
     image: "/games/mini-militia.jpg",
+    igRequired: true,
   },
   {
     id: "g5",
@@ -45,6 +49,7 @@ export const GAMES: GameItem[] = [
       "TLauncher Supported",
       "Bedrock Edition Supported (Windows, Android, IOS)",
     ],
+    ignRequired: true,
   },
   {
     id: "g6",
@@ -53,6 +58,7 @@ export const GAMES: GameItem[] = [
     date: "July 24",
     time: "4 PM - 5 PM",
     image: "/games/chess.jpg",
+    ignRequired: true,
   },
   {
     id: "g7",
@@ -62,5 +68,6 @@ export const GAMES: GameItem[] = [
     time: "4 PM - 5 PM",
     image: "/games/bgmi.jpg",
     details: ["Battle Royale - Erangel"],
+    ignRequired: true,
   },
 ];

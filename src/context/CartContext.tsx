@@ -11,6 +11,7 @@ export type GameItem = {
   time: string;
   image: string;
   details?: string[];
+  ignRequired: boolean;
 };
 
 interface CartContextType {
