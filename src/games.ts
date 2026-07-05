@@ -35,7 +35,7 @@ export const GAMES: GameItem[] = [
     date: "July 22",
     time: "4 PM - 5 PM",
     image: "/games/mini-militia.jpg",
-    igRequired: true,
+    ignRequired: true,
   },
   {
     id: "g5",

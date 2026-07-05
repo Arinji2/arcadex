@@ -111,6 +111,7 @@ function LuigiEasterEggContent() {
               </h2>
               <Image
                 preload
+                unoptimized
                 width={32}
                 height={32}
                 src="/luigi/telephone.webp"
@@ -130,6 +131,7 @@ function LuigiEasterEggContent() {
                 <Image
                   src="/luigi/mario-sad.gif"
                   alt="Mario Sad"
+                  unoptimized
                   fill
                   preload
                 />
