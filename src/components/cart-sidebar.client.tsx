@@ -7,16 +7,9 @@ export default function CartSidebar() {
   const { items, removeFromCart, isSidebarOpen, setSidebarOpen, total } =
     useCart();
 
-  let discount = 0;
-  let discountPercent = 0;
+  const discount = items.length >= 4 ? items.length * 10 : 0;
+  const discountPercent = items.length >= 4 ? 16.67 : 0;
 
-  if (items.length >= 5) {
-    discountPercent = 20;
-    discount = total * 0.2;
-  } else if (items.length >= 3) {
-    discountPercent = 10;
-    discount = total * 0.1;
-  }
   const finalTotal = total - discount;
 
   return (
@@ -58,8 +51,21 @@ export default function CartSidebar() {
                   <div className="font-label-bold text-label-bold">
                     {item.title}
                   </div>
-                  <div className="font-body-sm text-body-sm text-primary">
-                    ₹{item.price}
+                  <div className="flex items-baseline gap-2">
+                    {items.length >= 4 ? (
+                      <>
+                        <span className="text-body-sm text-muted-foreground line-through">
+                          ₹{item.price}
+                        </span>
+                        <span className="font-body-md text-body-md text-primary">
+                          ₹{item.price - 10}
+                        </span>
+                      </>
+                    ) : (
+                      <span className="font-body-sm text-body-sm text-primary">
+                        ₹{item.price}
+                      </span>
+                    )}
                   </div>
                 </div>
                 <button
@@ -87,11 +93,17 @@ export default function CartSidebar() {
               <span className="material-symbols-outlined text-tertiary">
                 local_offer
               </span>
+
               <div className="flex grow flex-col">
                 <span className="font-label-bold text-label-bold text-on-tertiary-fixed">
-                  {discountPercent}% Multi-Game Discount!
+                  Multi-Game Discount
+                </span>
+
+                <span className="text-body-sm text-on-tertiary-fixed/80">
+                  ₹10 off per game ({discountPercent}%)
                 </span>
               </div>
+
               <span className="font-body-sm font-bold text-body-sm text-tertiary">
                 -₹{discount}
               </span>
