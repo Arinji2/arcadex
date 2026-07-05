@@ -13,12 +13,13 @@ export default function Footer() {
         <div className="font-body-sm text-body-sm text-surface-container-highest">
           © 2026 ArcadeX | JULY 19 - JULY 25
         </div>
-        <a
+        <Link
+          target="_blank"
           className="font-body-md text-body-md text-surface-container-highest underline"
           href="https://www.arinji.com"
         >
           Made with ❤ by Arinji
-        </a>
+        </Link>
       </div>
       <nav className="flex flex-wrap justify-center gap-6 font-label-bold text-label-bold">
         <Link
@@ -33,6 +34,14 @@ export default function Footer() {
           scroll={false}
         >
           Contact Luigi
+        </Link>
+        <Link
+          className="text-surface-variant transition-all duration-200 hover:scale-105 hover:text-primary-fixed-dim"
+          href={"https://github.com/Arinji2/arcadex"}
+          target="_blank"
+          scroll={false}
+        >
+          GitHub
         </Link>
       </nav>
     </footer>
