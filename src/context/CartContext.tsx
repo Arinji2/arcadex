@@ -1,7 +1,12 @@
 "use client";
 
 import type React from "react";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import {
+  RegistrationLocalStorageKey,
+  type RegistrationLocalStorageType,
+} from "@/constants";
+import { GAMES } from "@/games";
 
 export type GameItem = {
   id: string;
@@ -48,6 +53,25 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const clearCart = () => setItems([]);
 
   const total = items.reduce((acc, item) => acc + item.price, 0);
+
+  useEffect(() => {
+    const savedData = localStorage.getItem(RegistrationLocalStorageKey);
+    console.log(savedData);
+    if (!savedData) return;
+
+    try {
+      const data = JSON.parse(savedData) as RegistrationLocalStorageType;
+      for (const [id] of Object.entries(data.igns)) {
+        console.log(id);
+        const gameData = GAMES.find((g) => g.id === id);
+        if (gameData) {
+          addToCart(gameData);
+        }
+      }
+    } catch (error) {
+      console.error("Failed to parse local storage data:", error);
+    }
+  }, []);
 
   return (
     <CartContext.Provider
