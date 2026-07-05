@@ -14,7 +14,6 @@ export default function Navbar() {
     { label: "Levels", href: "/" },
     { label: "Games", href: "/games" },
     { label: "Rules", href: "/rules" },
-    { label: "Register", href: "/register" },
   ];
 
   return (
