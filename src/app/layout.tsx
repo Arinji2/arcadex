@@ -5,6 +5,7 @@ import Footer from "@/components/footer.client";
 import Navbar from "@/components/navbar.client";
 import { CartProvider } from "@/context/CartContext";
 import "./globals.css";
+import LuigiEasterEgg from "@/components/luigi";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function RootLayout({
           <CartSidebar />
           <main className="flex grow flex-col">{children}</main>
           <Footer />
+          <LuigiEasterEgg />
         </CartProvider>
       </body>
     </html>

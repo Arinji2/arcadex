@@ -183,3 +183,36 @@ body {
   animation: cart-jiggle 450ms ease;
   transform-origin: center;
 }
+
+@keyframes character-run-loop {
+  0% {
+    left: -400px;
+    transform: scaleX(1);
+  }
+  49.9% {
+    left: 100vw;
+    transform: scaleX(1);
+  }
+  50% {
+    left: 100vw;
+    transform: scaleX(-1);
+  }
+  99.9% {
+    left: -400px;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: -400px;
+    transform: scaleX(1);
+  }
+}
+
+.animate-character-run {
+  animation: character-run-loop 7s linear infinite;
+}
+
+.animate-character-run-behind {
+  animation: character-run-loop 7s linear infinite;
+  animation-delay: 0.4s;
+  animation-fill-mode: backwards;
+}
