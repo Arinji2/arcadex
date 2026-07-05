@@ -2,6 +2,7 @@
 import clsx from "clsx";
 import Image from "next/image";
 import { useState } from "react";
+import { RegistrationLocalStorageKey } from "@/constants";
 import { type GameItem, useCart } from "@/context/CartContext";
 import { GAMES } from "@/games";
 import { DiscountCard } from "./discount";
@@ -13,6 +14,7 @@ export default function GamesPage() {
   const handleAdd = (game: GameItem) => {
     addToCart(game);
     setAnimatingBtn(game.id);
+    localStorage.removeItem(RegistrationLocalStorageKey);
     setTimeout(() => setAnimatingBtn(null), 1000);
   };
 
