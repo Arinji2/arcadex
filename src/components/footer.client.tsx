@@ -21,7 +21,7 @@ export default function Footer() {
           Made with ❤ by Arinji
         </Link>
       </div>
-      <nav className="flex flex-wrap justify-center gap-6 font-label-bold text-label-bold">
+      <nav className="grid grid-cols-3 justify-center gap-6 font-label-bold text-label-bold">
         <Link
           className="text-surface-variant transition-all duration-200 hover:scale-105 hover:text-primary-fixed-dim"
           href="/rules"
@@ -42,6 +42,27 @@ export default function Footer() {
           scroll={false}
         >
           GitHub
+        </Link>
+        <Link
+          className="text-surface-variant transition-all duration-200 hover:scale-105 hover:text-primary-fixed-dim"
+          href="/tos.pdf"
+          target="_blank"
+        >
+          Terms Of Service
+        </Link>
+        <Link
+          className="text-surface-variant transition-all duration-200 hover:scale-105 hover:text-primary-fixed-dim"
+          href="/refunds.pdf"
+          target="_blank"
+        >
+          Refunds
+        </Link>
+        <Link
+          className="text-surface-variant transition-all duration-200 hover:scale-105 hover:text-primary-fixed-dim"
+          href="/contact.pdf"
+          target="_blank"
+        >
+          Contact Us
         </Link>
       </nav>
     </footer>
