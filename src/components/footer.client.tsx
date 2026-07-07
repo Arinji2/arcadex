@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -6,8 +7,13 @@ export default function Footer() {
   const pathname = usePathname();
   return (
     <footer className="mt-auto flex w-full flex-col items-center justify-between gap-4 border-[#222222] border-t-8 bg-on-background px-container-margin py-10 md:flex-row">
-      <div className="font-headline-xl text-headline-xl text-primary uppercase tracking-tighter">
-        ArcadeX
+      <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
+        <div className="font-headline-xl text-headline-xl text-primary uppercase tracking-tighter">
+          ArcadeX
+        </div>
+        <div className="h-fit w-fit overflow-hidden rounded-full">
+          <Image src="/logo.png" alt="ArcadeX" width={80} height={80} />
+        </div>
       </div>
       <div className="flex h-fit w-fit flex-col items-center justify-center gap-2">
         <div className="font-body-sm text-body-sm text-surface-container-highest">
