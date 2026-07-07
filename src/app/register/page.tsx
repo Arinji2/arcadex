@@ -10,6 +10,7 @@ import {
 } from "@/constants";
 import { type GameItem, useCart } from "@/context/CartContext";
 import type { Registration } from "@/lib/types";
+import { EmailAction } from "./email.action";
 import { LoginAction } from "./login.action";
 
 export default function Register() {
@@ -79,15 +80,10 @@ export default function Register() {
 
     await LoginAction({ registrationData: registrationData });
 
-    setTimeout(() => {
-      if (Math.random() > 0.2) {
-        localStorage.removeItem(RegistrationLocalStorageKey);
-        router.push("/register/success");
-      } else {
-        router.push("/register/error");
-      }
-      setLoading(false);
-    }, 1500);
+    await EmailAction();
+
+    localStorage.removeItem(RegistrationLocalStorageKey);
+    router.push("/register/success");
   };
 
   return (
