@@ -9,6 +9,8 @@ import {
   type RegistrationLocalStorageType,
 } from "@/constants";
 import { type GameItem, useCart } from "@/context/CartContext";
+import type { Registration } from "@/lib/types";
+import { LoginAction } from "./login.action";
 
 export default function Register() {
   const router = useRouter();
@@ -57,9 +59,25 @@ export default function Register() {
     }));
   };
 
-  const handleSubmit = (e: React.SubmitEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
     setLoading(true);
+
+    const registrationData: Registration = {
+      name: formData.fullName,
+      email: formData.email,
+      mobile_num: formData.mobileNo,
+      discord_id: formData.discordId,
+      college_name: formData.collegeName,
+      games: items.map((item) => ({
+        game_id: item.id,
+        ign: formData.igns[item.id] || "",
+      })),
+      payment_status: "pending",
+      cash_free_order_id: undefined,
+    };
+
+    await LoginAction({ registrationData: registrationData });
 
     setTimeout(() => {
       if (Math.random() > 0.2) {
