@@ -1,28 +1,24 @@
+import { cookies } from "next/headers";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import db from "@/lib/db";
 import UserAvatar from "./avatar.client";
 import { SelectedGames } from "./games";
 
-const data = {
-  name: "Arinjii",
-  email: "arinjay@gmail.com",
-  discordID: "arinjay#1234",
-  gamesSelected: [
-    {
-      id: "g1",
-      ign: "Arinjii",
-    },
-    {
-      id: "g2",
-      ign: "Arinjii",
-    },
+export default async function SuccessPage() {
+  const cookieStore = await cookies();
 
-    {
-      id: "g3",
-      ign: "Arinjii",
-    },
-  ],
-};
-export default function SuccessPage() {
+  const uid = cookieStore.get("uid")?.value;
+
+  if (!uid) {
+    redirect("/");
+  }
+  console.log(uid);
+  const snapshot = await db.registrations.doc(uid).get();
+  const registrationData = snapshot.data();
+  if (!registrationData) {
+    redirect("/");
+  }
   return (
     <div className="relative flex min-h-[calc(100vh-80px)] grow flex-col items-center justify-center gap-8 overflow-hidden p-container-margin">
       <div
@@ -77,7 +73,7 @@ export default function SuccessPage() {
 
           <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
             <div className="relative flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-full border-thick bg-white">
-              <UserAvatar seed={data.name} />
+              <UserAvatar seed={registrationData.name} />
             </div>
             <div className="w-full space-y-4">
               <div>
@@ -85,7 +81,7 @@ export default function SuccessPage() {
                   Name
                 </div>
                 <div className="font-headline-lg-mobile text-headline-lg-mobile text-on-tertiary-container uppercase tracking-tight">
-                  {data.name}
+                  {registrationData.name}
                 </div>
               </div>
               <div>
@@ -93,7 +89,7 @@ export default function SuccessPage() {
                   Email
                 </div>
                 <div className="font-body-md text-body-md text-on-tertiary-container tracking-tight">
-                  {data.email}
+                  {registrationData.email}
                 </div>
               </div>
             </div>
@@ -110,7 +106,7 @@ export default function SuccessPage() {
           </Link>
         </div>
       </div>
-      <SelectedGames />
+      <SelectedGames games={registrationData.games} />
     </div>
   );
 }

@@ -6,10 +6,12 @@ export type Registration = {
   mobile_num: string;
   discord_id: string;
 
-  games: {
-    game_id: string;
-    ign: string;
-  }[];
+  games: RegistrationGame[];
 
   cash_free_order_id?: string;
+};
+
+export type RegistrationGame = {
+  game_id: string;
+  ign: string;
 };

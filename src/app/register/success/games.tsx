@@ -2,38 +2,21 @@ import { clsx } from "clsx";
 import Image from "next/image";
 import type { GameItem } from "@/context/CartContext";
 import { GAMES } from "@/games";
+import type { RegistrationGame } from "@/lib/types";
 
-const data = {
-  name: "Arinjii",
-  email: "arinjay@gmail.com",
-  discordID: "arinjay#1234",
-  gamesSelected: [
-    {
-      id: "g1",
-      ign: "Arinjii",
-    },
-    {
-      id: "g2",
-      ign: "Arinjii",
-    },
-
-    {
-      id: "g3",
-      ign: "Arinjii",
-    },
-  ],
-};
-export function SelectedGames() {
+export function SelectedGames({ games }: { games: RegistrationGame[] }) {
   return (
     <div className="flex w-full max-w-2xl flex-col items-center justify-center gap-4">
       <h2 className="mb-4 font-headline-lg-mobile text-headline-lg-mobile text-primary uppercase">
         Selected Games
       </h2>
       <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
-        {data.gamesSelected.map((game) => {
-          const gameData = GAMES.find((g) => g.id === game.id);
+        {games.map((game) => {
+          const gameData = GAMES.find((g) => g.id === game.game_id);
           if (!gameData) return null;
-          return <GameCard key={game.id} game={gameData} ignValue={game.ign} />;
+          return (
+            <GameCard key={game.game_id} game={gameData} ignValue={game.ign} />
+          );
         })}
       </div>
     </div>
