@@ -1,7 +1,13 @@
 "use client";
 
 import type React from "react";
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import {
   RegistrationLocalStorageKey,
   type RegistrationLocalStorageType,
@@ -37,15 +43,17 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [jiggle, setJiggle] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
-  const addToCart = (item: GameItem) => {
-    if (!items.find((i) => i.id === item.id)) {
-      setItems((prev) => [...prev, item]);
+  const addToCart = useCallback(
+    (item: GameItem) => {
+      if (!items.find((i) => i.id === item.id)) {
+        setItems((prev) => [...prev, item]);
 
-      setJiggle(true);
-      setTimeout(() => setJiggle(false), 500);
-    }
-  };
-
+        setJiggle(true);
+        setTimeout(() => setJiggle(false), 500);
+      }
+    },
+    [items],
+  );
   const removeFromCart = (id: string) => {
     setItems(items.filter((i) => i.id !== id));
   };
@@ -56,13 +64,11 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const savedData = localStorage.getItem(RegistrationLocalStorageKey);
-    console.log(savedData);
     if (!savedData) return;
 
     try {
       const data = JSON.parse(savedData) as RegistrationLocalStorageType;
       for (const [id] of Object.entries(data.igns)) {
-        console.log(id);
         const gameData = GAMES.find((g) => g.id === id);
         if (gameData) {
           addToCart(gameData);
@@ -71,7 +77,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     } catch (error) {
       console.error("Failed to parse local storage data:", error);
     }
-  }, []);
+  }, [addToCart]);
 
   return (
     <CartContext.Provider

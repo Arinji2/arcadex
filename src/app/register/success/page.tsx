@@ -13,7 +13,6 @@ export default async function SuccessPage() {
   if (!uid) {
     redirect("/");
   }
-  console.log(uid);
   const snapshot = await db.registrations.doc(uid).get();
   const registrationData = snapshot.data();
   if (!registrationData) {

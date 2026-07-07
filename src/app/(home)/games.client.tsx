@@ -24,7 +24,6 @@ export function GamesSection() {
 function GameCard({ game }: { game: GameItem }) {
   const { addToCart, items, removeFromCart } = useCart();
   const isInCart = items.some((item) => item.id === game.id);
-  console.log(isInCart);
   const dayNum = game.id[game.id.length - 1];
   return (
     <div className="group relative rounded-xl border-thick bg-tertiary-container p-block-padding shadow-hard transition-transform hover:translate-y-1">
