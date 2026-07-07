@@ -1,4 +1,4 @@
-import { GamesSection } from "./games";
+import { GamesSection } from "./games.client";
 import { Hero } from "./hero";
 import { HomeInfo } from "./info";
 
