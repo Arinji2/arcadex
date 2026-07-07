@@ -123,6 +123,10 @@ body {
   box-shadow: 8px 8px 0px 0px rgba(34, 34, 34, 1);
 }
 
+.drop-shadow-hard {
+  filter: drop-shadow(8px 8px 0 rgba(34, 34, 34, 1));
+}
+
 .border-thick {
   border: 4px solid #222222;
 }

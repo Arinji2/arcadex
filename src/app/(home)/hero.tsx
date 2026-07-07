@@ -1,16 +1,38 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Hero() {
   return (
     <section className="relative flex min-h-150 w-full items-center justify-center overflow-hidden border-[#222222] border-b-8 bg-pixel-sky px-container-margin py-20">
       <div className="pointer-events-none absolute inset-0 z-0 hidden md:block">
-        <div className="absolute top-20 left-10 h-16 w-32 rounded-full border-thick bg-white opacity-90 shadow-hard"></div>
-        <div className="absolute top-10 right-20 h-24 w-48 rounded-full border-thick bg-white opacity-90 shadow-hard"></div>
-        <div className="absolute bottom-32 left-1/4 h-12 w-24 rounded-full border-thick bg-white opacity-90 shadow-hard"></div>
+        <div className="absolute top-20 left-10 h-26 w-42">
+          <Image
+            src="/cloud.svg"
+            alt="Cloud"
+            fill
+            className="rotate-[-13deg] drop-shadow-hard"
+          />
+        </div>
+        <div className="absolute top-10 right-20 h-34 w-58">
+          <Image
+            src="/cloud.svg"
+            alt="Cloud"
+            fill
+            className="rotate-[-13deg] drop-shadow-hard"
+          />
+        </div>
+        <div className="absolute bottom-32 left-1/4 h-32 w-44">
+          <Image
+            src="/cloud.svg"
+            alt="Cloud"
+            fill
+            className="rotate-[-13deg] drop-shadow-hard"
+          />
+        </div>
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
-        <div className="-rotate-2 rounded-xl border-thick bg-surface px-8 py-4 shadow-hard-lg">
+        <div className="-rotate-2 scale-[.80] rounded-xl border-thick bg-surface px-8 py-4 shadow-hard-lg">
           <h1 className="font-headline-xl text-headline-xl text-primary uppercase drop-shadow-[2px_2px_0px_#222]">
             ARCADEX
           </h1>
