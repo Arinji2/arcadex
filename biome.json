@@ -29,6 +29,9 @@
           "fix": "safe"
         }
       },
+      "style": {
+        "noNonNullAssertion": "off"
+      },
       "recommended": true,
       "correctness": {
         "noUnusedImports": {
