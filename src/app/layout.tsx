@@ -18,8 +18,8 @@ const rubik = Rubik({
 });
 
 export const metadata: Metadata = {
-  title: "ArcadeX - Gaming Expo",
-  description: "The ultimate 7-day gaming marathon.",
+  title: "ArcadeX",
+  description: "Play. Conquer. Repeat",
 };
 
 export default function RootLayout({
