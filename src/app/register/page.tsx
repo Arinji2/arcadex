@@ -1,4 +1,5 @@
 "use client";
+import { load } from "@cashfreepayments/cashfree-js";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,6 +12,7 @@ import {
 import { type GameItem, useCart } from "@/context/CartContext";
 import type { Registration } from "@/lib/types";
 import { LoginAction } from "./login.action";
+import { PayAction } from "./pay.action";
 
 export default function Register() {
   const router = useRouter();
@@ -78,6 +80,19 @@ export default function Register() {
     };
 
     await LoginAction({ registrationData: registrationData });
+    const orderResult = await PayAction({ registrationData: registrationData });
+
+    if (orderResult.success) {
+      localStorage.removeItem(RegistrationLocalStorageKey);
+      const cashfree = await load({
+        mode: "sandbox",
+      });
+
+      cashfree.checkout({
+        paymentSessionId: orderResult.payment_session_id,
+        redirectTarget: "_self",
+      });
+    }
 
     setTimeout(() => {
       if (Math.random() > 0.2) {
