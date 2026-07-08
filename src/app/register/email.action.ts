@@ -1,7 +1,6 @@
 //This will later change to a api route once cashfreee is integrated
 "use server";
 
-import path from "node:path/posix";
 import type { GameItem } from "@/context/CartContext";
 import { registrationConfirmationEmail } from "@/email/registration/template";
 import { GAMES } from "@/games";
@@ -28,6 +27,9 @@ export async function EmailAction() {
       });
     }
   });
+  const logo = await fetch(`${process.env.NEXT_PUBLIC_URL}/logo.png`).then(
+    (r) => r.arrayBuffer(),
+  );
   console.log(`SENDING EMAIL TO ${registrationData.email}`);
   await transporter.sendMail({
     from: `"ArcadeX" <${process.env.EMAIL_USER}>`,
@@ -44,7 +46,7 @@ export async function EmailAction() {
     attachments: [
       {
         filename: "ieee-logo.png",
-        path: path.join(process.cwd(), "public", "logo.png"),
+        content: Buffer.from(logo),
         cid: "ieee-logo",
       },
     ],
