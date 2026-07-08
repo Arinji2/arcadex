@@ -3,6 +3,7 @@
 import { clsx } from "clsx";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
+import { EmailAction } from "./email.action";
 import { PayAction } from "./pay.action";
 
 // Native browser compression using Canvas
@@ -83,7 +84,7 @@ export default function PayForm() {
       }
 
       await PayAction(formData);
-      // await EmailAction();
+      await EmailAction();
 
       router.push("/register/success");
     } catch (error) {
