@@ -3,12 +3,11 @@ export type Registration = {
   email: string;
   college_name: string;
   payment_status: "pending" | "paid";
+  payment_screenshot?: string;
   mobile_num: string;
   discord_id: string;
-
   games: RegistrationGame[];
-
-  cash_free_order_id?: string;
+  verified: boolean;
 };
 
 export type RegistrationGame = {
