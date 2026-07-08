@@ -9,8 +9,8 @@ import { transporter } from "@/lib/email";
 import { getUID } from "@/lib/session";
 
 export async function EmailAction() {
-  const { uid, createdCookie } = await getUID();
-  if (createdCookie) return;
+  const { uid } = await getUID({ create: false });
+  if (!uid) return;
 
   const snapshot = await db.registrations.doc(uid).get();
   const registrationData = snapshot.data();

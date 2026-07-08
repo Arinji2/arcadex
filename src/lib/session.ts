@@ -3,13 +3,14 @@
 import { randomUUID } from "node:crypto";
 import { cookies } from "next/headers";
 
-export async function getUID() {
+export async function getUID({ create = true }: { create?: boolean } = {}) {
   const cookieStore = await cookies();
   let createdCookie = false;
 
   let uid = cookieStore.get("uid")?.value;
 
   if (!uid) {
+    if (!create) return { uid: null, createdCookie: false };
     uid = randomUUID();
 
     cookieStore.set("uid", uid, {

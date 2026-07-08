@@ -9,7 +9,7 @@ export async function LoginAction({
   registrationData: Registration;
 }) {
   const { uid, createdCookie } = await getUID();
-  if (!createdCookie) return;
+  if (!createdCookie || !uid) return;
   await db.registrations.doc(uid).set(registrationData);
   return;
 }
