@@ -62,10 +62,10 @@ export default function RulesPage() {
               Timings
             </h3>
             <p className="font-body-md text-body-md text-on-secondary-container">
-              All games will be played from 4PM-5PM and will not change under
-              any circumstance. Please join the respective google meets
-              15minutes before the games starts to be on time.Late entry will
-              not be allowed.
+              All games will be played from 4 PM - 5 PM and will not change
+              under any circumstance. Please join the respective Google Meets 15
+              minutes before the games start to be on time. Late entry will not
+              be allowed.
             </p>
           </div>
         </div>
@@ -116,15 +116,17 @@ export default function RulesPage() {
         <h2 className="mb-6 inline-block border-secondary border-b-4 pb-2 font-headline-lg text-headline-lg-mobile uppercase md:mb-8 md:text-headline-lg">
           Game Setups
         </h2>
+
         <div className="flex flex-col gap-6">
+          {/* Fall Guys */}
           <details className="group border-thick bg-surface shadow-hard [&_summary::-webkit-details-marker]:hidden">
-            <summary className="flex cursor-pointer items-center justify-between border-transparent border-b-4 bg-surface-container-highest p-4 transition-colors hover:bg-[#ffcc00] group-open:border-[#222222] md:p-6">
+            <summary className="flex cursor-pointer items-center justify-between border-transparent border-b-4 bg-surface-container-highest p-4 transition-colors hover:bg-[#ffb4aa] group-open:border-[#222222] md:p-6">
               <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center border-thick bg-primary font-bold font-rubik text-white md:h-12 md:w-12">
-                  C
+                <div className="flex h-10 w-10 items-center justify-center border-thick bg-primary-container font-bold font-rubik text-white md:h-12 md:w-12">
+                  F
                 </div>
                 <span className="font-headline-lg-mobile text-headline-lg-mobile text-xl uppercase md:text-2xl">
-                  CHESS
+                  Fall Guys
                 </span>
               </div>
               <span className="material-symbols-outlined text-3xl transition-transform group-open:rotate-180">
@@ -139,8 +141,8 @@ export default function RulesPage() {
                 >
                   check_box
                 </span>
-                <span className="font-body-md text-body-md">
-                  Join the official Discord and link your Riot ID.
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  Be logged into the official Fall Guys application beforehand.
                 </span>
               </div>
               <div className="flex items-start gap-3">
@@ -150,23 +152,244 @@ export default function RulesPage() {
                 >
                   check_box
                 </span>
-                <span className="font-body-md text-body-md">
-                  Map Vetos happen in the lobby chat 10 mins before start.
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  Wait in the main menu for the admins to share the custom lobby
+                  code in the Google Meet.
                 </span>
               </div>
-              <button
-                type="button"
-                className="interactive-btn mt-4 w-max border-thick bg-primary-container px-6 py-3 font-label-bold text-label-bold text-white uppercase shadow-hard"
-              >
-                Download Config
-              </button>
             </div>
           </details>
 
+          {/* Deadshot.IO */}
+          <details className="group border-thick bg-surface shadow-hard [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex cursor-pointer items-center justify-between border-transparent border-b-4 bg-surface-container-highest p-4 transition-colors hover:bg-error-container group-open:border-[#222222] md:p-6">
+              <div className="flex items-center gap-4">
+                <div className="flex h-10 w-10 items-center justify-center border-thick bg-error font-bold font-rubik text-white md:h-12 md:w-12">
+                  D
+                </div>
+                <span className="font-headline-lg-mobile text-headline-lg-mobile text-xl uppercase md:text-2xl">
+                  Deadshot.IO
+                </span>
+              </div>
+              <span className="material-symbols-outlined text-3xl transition-transform group-open:rotate-180">
+                expand_more
+              </span>
+            </summary>
+            <div className="flex flex-col gap-4 border-[#222] border-t-4 bg-surface p-4 md:p-6">
+              <div className="flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined mt-1 text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_box
+                </span>
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  Open deadshot.io in your browser and ensure your account is
+                  logged in.
+                </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined mt-1 text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_box
+                </span>
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  Admins will share the direct lobby link/code right before the
+                  match starts.
+                </span>
+              </div>
+            </div>
+          </details>
+
+          {/* UNO */}
+          <details className="group border-thick bg-surface shadow-hard [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex cursor-pointer items-center justify-between border-transparent border-b-4 bg-surface-container-highest p-4 transition-colors hover:bg-tertiary-fixed group-open:border-[#222222] md:p-6">
+              <div className="flex items-center gap-4">
+                <div className="flex h-10 w-10 items-center justify-center border-thick bg-tertiary font-bold font-rubik text-white md:h-12 md:w-12">
+                  U
+                </div>
+                <span className="font-headline-lg-mobile text-headline-lg-mobile text-xl uppercase md:text-2xl">
+                  UNO
+                </span>
+              </div>
+              <span className="material-symbols-outlined text-3xl transition-transform group-open:rotate-180">
+                expand_more
+              </span>
+            </summary>
+            <div className="flex flex-col gap-4 border-[#222] border-t-4 bg-surface p-4 md:p-6">
+              <div className="flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined mt-1 text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_box
+                </span>
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  Download the official UNO!™ mobile app on your device.
+                </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined mt-1 text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_box
+                </span>
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  Make sure your account is fully created and you've completed
+                  any required tutorials beforehand.
+                </span>
+              </div>
+            </div>
+          </details>
+
+          {/* Mini Militia */}
           <details className="group border-thick bg-surface shadow-hard [&_summary::-webkit-details-marker]:hidden">
             <summary className="flex cursor-pointer items-center justify-between border-transparent border-b-4 bg-surface-container-highest p-4 transition-colors hover:bg-secondary-container group-open:border-[#222222] md:p-6">
               <div className="flex items-center gap-4">
                 <div className="flex h-10 w-10 items-center justify-center border-thick bg-secondary font-bold font-rubik text-white md:h-12 md:w-12">
+                  M
+                </div>
+                <span className="font-headline-lg-mobile text-headline-lg-mobile text-xl uppercase md:text-2xl">
+                  Mini Militia
+                </span>
+              </div>
+              <span className="material-symbols-outlined text-3xl transition-transform group-open:rotate-180">
+                expand_more
+              </span>
+            </summary>
+            <div className="flex flex-col gap-4 border-[#222] border-t-4 bg-surface p-4 md:p-6">
+              <div className="flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined mt-1 text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_box
+                </span>
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  Download the official Mini Militia - Doodle Army 2 app.
+                </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined mt-1 text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_box
+                </span>
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  <strong>Crucial:</strong> Your account must be a{" "}
+                  <strong className="text-primary">minimum of Level 2</strong>{" "}
+                  to join custom lobbies. Grind this out before the tournament.
+                </span>
+              </div>
+            </div>
+          </details>
+
+          {/* Minecraft */}
+          <details className="group border-thick bg-surface shadow-hard [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex cursor-pointer items-center justify-between border-transparent border-b-4 bg-surface-container-highest p-4 transition-colors hover:bg-secondary-fixed group-open:border-[#222222] md:p-6">
+              <div className="flex items-center gap-4">
+                <div className="flex h-10 w-10 items-center justify-center border-thick bg-on-secondary-fixed-variant font-bold font-rubik text-white md:h-12 md:w-12">
+                  MC
+                </div>
+                <span className="font-headline-lg-mobile text-headline-lg-mobile text-xl uppercase md:text-2xl">
+                  Minecraft
+                </span>
+              </div>
+              <span className="material-symbols-outlined text-3xl transition-transform group-open:rotate-180">
+                expand_more
+              </span>
+            </summary>
+            <div className="flex flex-col gap-4 border-[#222] border-t-4 bg-surface p-4 md:p-6">
+              <div className="flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined mt-1 text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_box
+                </span>
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  Have Minecraft downloaded and ready to play on your preferred
+                  device.
+                </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined mt-1 text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_box
+                </span>
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  We support almost all platforms: Mobile, Windows 10/Bedrock,
+                  TLauncher, and official Java Edition.
+                </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined mt-1 text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_box
+                </span>
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  Ensure your game is updated to the latest version before
+                  joining the server.
+                </span>
+              </div>
+            </div>
+          </details>
+
+          {/* Chess */}
+          <details className="group border-thick bg-surface shadow-hard [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex cursor-pointer items-center justify-between border-transparent border-b-4 bg-surface-container-highest p-4 transition-colors hover:bg-[#ffcc00] group-open:border-[#222222] md:p-6">
+              <div className="flex items-center gap-4">
+                <div className="flex h-10 w-10 items-center justify-center border-thick bg-black font-bold font-rubik text-white md:h-12 md:w-12">
+                  C
+                </div>
+                <span className="font-headline-lg-mobile text-headline-lg-mobile text-xl uppercase md:text-2xl">
+                  Chess
+                </span>
+              </div>
+              <span className="material-symbols-outlined text-3xl transition-transform group-open:rotate-180">
+                expand_more
+              </span>
+            </summary>
+            <div className="flex flex-col gap-4 border-[#222] border-t-4 bg-surface p-4 md:p-6">
+              <div className="flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined mt-1 text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_box
+                </span>
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  Be logged into your account on the official Chess app/website.
+                </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined mt-1 text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_box
+                </span>
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  Ensure the IGN provided during registration matches your
+                  account username exactly.
+                </span>
+              </div>
+            </div>
+          </details>
+
+          {/* BGMI */}
+          <details className="group border-thick bg-surface shadow-hard [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex cursor-pointer items-center justify-between border-transparent border-b-4 bg-surface-container-highest p-4 transition-colors hover:bg-tertiary-container group-open:border-[#222222] md:p-6">
+              <div className="flex items-center gap-4">
+                <div className="flex h-10 w-10 items-center justify-center border-thick bg-tertiary-container font-bold font-rubik text-black md:h-12 md:w-12">
                   B
                 </div>
                 <span className="font-headline-lg-mobile text-headline-lg-mobile text-xl uppercase md:text-2xl">
@@ -178,10 +401,30 @@ export default function RulesPage() {
               </span>
             </summary>
             <div className="flex flex-col gap-4 border-[#222] border-t-4 bg-surface p-4 md:p-6">
-              <p className="font-body-md text-body-md text-on-surface-variant">
-                Mobile setups must be verified by admins. Emulators strictly
-                prohibited.
-              </p>
+              <div className="flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined mt-1 text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_box
+                </span>
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  Have the official BGMI app downloaded, updated, and logged in.
+                </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined mt-1 text-primary"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  check_box
+                </span>
+                <span className="font-body-md text-body-md text-on-surface-variant">
+                  Mobile setups must be verified by admins. Emulators are
+                  strictly prohibited and will result in an immediate
+                  disqualification.
+                </span>
+              </div>
             </div>
           </details>
         </div>
