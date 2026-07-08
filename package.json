@@ -17,6 +17,8 @@
     "axios": "^1.18.1",
     "cashfree-pg": "^6.0.4",
     "clsx": "^2.1.1",
+    "exceljs": "^4.4.0",
+    "file-saver": "^2.0.5",
     "firebase": "^12.15.0",
     "firebase-admin": "^14.1.0",
     "next": "16.2.10",
@@ -29,6 +31,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.5.2",
     "@tailwindcss/postcss": "^4.3.2",
+    "@types/file-saver": "^2.0.7",
     "@types/node": "^20",
     "@types/nodemailer": "^8.0.1",
     "@types/react": "^19",
