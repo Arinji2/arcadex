@@ -7,19 +7,22 @@ import { SelectedGames } from "./games";
 
 export default async function SuccessPage() {
   const cookieStore = await cookies();
-
   const uid = cookieStore.get("uid")?.value;
 
   if (!uid) {
     redirect("/");
   }
+
   const snapshot = await db.registrations.doc(uid).get();
   const registrationData = snapshot.data();
+
   if (!registrationData) {
     redirect("/");
   }
+
   return (
     <div className="relative flex min-h-[calc(100vh-80px)] grow flex-col items-center justify-center gap-8 overflow-hidden p-container-margin">
+      {/* Background & Decorators */}
       <div
         className="pointer-events-none absolute inset-0 opacity-10"
         style={{
@@ -60,6 +63,7 @@ export default async function SuccessPage() {
           </p>
         </header>
 
+        {/* Player Profile Box */}
         <div className="relative w-full overflow-hidden border-thick bg-tertiary-fixed p-6 text-left shadow-hard">
           <div className="absolute top-0 right-0 border-[#222] border-b-4 border-l-4 bg-tertiary-container p-2">
             <span className="material-symbols-outlined text-on-tertiary-container">
@@ -95,6 +99,33 @@ export default async function SuccessPage() {
           </div>
         </div>
 
+        {/* NEW: WhatsApp Community Box */}
+        <div className="relative w-full overflow-hidden border-thick bg-secondary-container p-6 text-left shadow-hard">
+          <div className="absolute top-0 right-0 border-[#222] border-b-4 border-l-4 bg-secondary p-2">
+            <span className="material-symbols-outlined text-white">forum</span>
+          </div>
+          <h2 className="mb-4 font-label-bold text-label-bold text-on-secondary-container uppercase opacity-80">
+            Next Steps
+          </h2>
+          <div className="flex flex-col gap-5">
+            <p className="font-body-md text-on-secondary-container">
+              To get important announcements, match codes, and support from
+              admins, you <strong>must</strong> join our official WhatsApp
+              Community.
+            </p>
+            <a
+              href={process.env.NEXT_PUBLIC_WHATSAPP_URL || "#"}
+              target="_blank"
+              rel="noreferrer"
+              className="interactive-btn flex w-full items-center justify-center gap-2 border-thick bg-secondary px-6 py-4 font-label-bold text-label-bold text-white uppercase tracking-wide shadow-hard transition-all md:w-fit"
+            >
+              <span className="material-symbols-outlined">chat</span>
+              JOIN WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        {/* Buttons */}
         <div className="mt-4 flex w-full flex-col gap-4 md:flex-row">
           <Link
             href="/"
@@ -105,6 +136,7 @@ export default async function SuccessPage() {
           </Link>
         </div>
       </div>
+
       <SelectedGames games={registrationData.games} />
     </div>
   );
