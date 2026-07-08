@@ -9,6 +9,7 @@ export const GAMES: GameItem[] = [
     time: "4 PM - 5 PM",
     image: "/games/fall-guys.jpg",
     ignRequired: false,
+    details: ["Knockout Rooms"],
   },
   {
     id: "g2",
@@ -18,6 +19,7 @@ export const GAMES: GameItem[] = [
     time: "4 PM - 5 PM",
     image: "/games/deadshot-io.jpg",
     ignRequired: false,
+    details: ["20min Deathmatch FFA"],
   },
   {
     id: "g3",
@@ -27,6 +29,7 @@ export const GAMES: GameItem[] = [
     time: "4 PM - 5 PM",
     image: "/games/uno.jpg",
     ignRequired: false,
+    details: ["Knockout Rooms"],
   },
   {
     id: "g4",
@@ -36,6 +39,7 @@ export const GAMES: GameItem[] = [
     time: "4 PM - 5 PM",
     image: "/games/mini-militia.jpg",
     ignRequired: false,
+    details: ["Knockout Rooms"],
   },
   {
     id: "g5",
@@ -59,6 +63,7 @@ export const GAMES: GameItem[] = [
     time: "4 PM - 5 PM",
     image: "/games/chess.jpg",
     ignRequired: true,
+    details: ["5min Blitz Chess"],
   },
   {
     id: "g7",
@@ -67,7 +72,7 @@ export const GAMES: GameItem[] = [
     date: "July 25",
     time: "4 PM - 5 PM",
     image: "/games/bgmi.jpg",
-    details: ["Battle Royale - Erangel"],
+    details: ["Battle Royale - Levik"],
     ignRequired: true,
   },
 ];
