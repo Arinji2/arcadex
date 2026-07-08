@@ -1,9 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-150 w-full items-center justify-center overflow-hidden border-[#222222] border-b-8 bg-pixel-sky px-container-margin py-20">
+    <section className="relative flex h-[100svh] w-full items-center justify-center overflow-hidden border-[#222222] border-b-8 bg-pixel-sky px-container-margin py-20">
       <div className="pointer-events-none absolute inset-0 z-0 hidden md:block">
         <div className="absolute top-20 left-10 h-26 w-42">
           <Image
@@ -38,22 +37,28 @@ export function Hero() {
           </h1>
         </div>
 
+        <div className="scale-[.80] rounded-xl border-thick bg-surface px-8 py-4 shadow-hard-lg">
+          <p className="font-headline-lg text-headline-lg text-primary">
+            Website is under maintenance and will be back online by 12pm today
+          </p>
+        </div>
+
         <p className="rotate-1 transform rounded-lg border-thick bg-on-background px-6 py-2 font-headline-lg text-headline-lg text-on-secondary shadow-hard">
           JULY 19 - JULY 25
         </p>
 
-        <Link
-          className="interactive-btn mt-8 flex items-center gap-3 rounded-xl border-thick bg-secondary px-8 py-4 font-headline-lg text-headline-lg text-on-secondary shadow-hard-lg"
-          href="/games"
-        >
-          <span
-            className="material-symbols-outlined text-[40px]"
-            data-icon="play_arrow"
-          >
-            play_arrow
-          </span>
-          ENTER STAGE
-        </Link>
+        {/* <Link */}
+        {/*   className="interactive-btn mt-8 flex items-center gap-3 rounded-xl border-thick bg-secondary px-8 py-4 font-headline-lg text-headline-lg text-on-secondary shadow-hard-lg" */}
+        {/*   href="/games" */}
+        {/* > */}
+        {/*   <span */}
+        {/*     className="material-symbols-outlined text-[40px]" */}
+        {/*     data-icon="play_arrow" */}
+        {/*   > */}
+        {/*     play_arrow */}
+        {/*   </span> */}
+        {/*   ENTER STAGE */}
+        {/* </Link> */}
 
         <div className="mt-4 flex flex-col gap-4 sm:flex-row md:hidden">
           <div className="-rotate-3 rounded border-thick bg-primary px-4 py-2 font-label-bold text-label-bold text-on-primary shadow-hard">
