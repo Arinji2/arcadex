@@ -16,7 +16,7 @@ export default function Register() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const { items, total } = useCart();
+  const { items } = useCart();
 
   const [formData, setFormData] = useState<RegistrationLocalStorageType>({
     fullName: "",
@@ -48,6 +48,8 @@ export default function Register() {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
+
+  const total = items.length >= 4 ? items.length * 50 : items.length * 60;
 
   const handleIgnChange = (gameId: string, value: string) => {
     setFormData((prev) => ({
