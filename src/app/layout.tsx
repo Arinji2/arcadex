@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Rubik } from "next/font/google";
+import CartSidebar from "@/components/cart-sidebar.client";
+import Footer from "@/components/footer.client";
+import Navbar from "@/components/navbar.client";
 import { CartProvider } from "@/context/CartContext";
 import "./globals.css";
+import LuigiEasterEgg from "@/components/luigi";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -35,11 +39,11 @@ export default function RootLayout({
         className={`${plusJakarta.variable} ${rubik.variable} flex min-h-screen flex-col overflow-x-hidden bg-background font-body-md text-on-surface antialiased`}
       >
         <CartProvider>
-          {/* <Navbar /> */}
-          {/* <CartSidebar /> */}
+          <Navbar />
+          <CartSidebar />
           <main className="flex grow flex-col">{children}</main>
-          {/* <Footer /> */}
-          {/* <LuigiEasterEgg /> */}
+          <Footer />
+          <LuigiEasterEgg />
         </CartProvider>
       </body>
     </html>
