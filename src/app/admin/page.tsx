@@ -1,7 +1,9 @@
+import { GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import db from "@/lib/db";
-import { storage } from "@/lib/firebase-admin";
+import { s3Client } from "@/lib/s3";
 import type { RegistrationWithId } from "./admin-utils";
 import RegistrationDashboard from "./registration-dashboard.client";
 
@@ -16,9 +18,6 @@ export default async function Page() {
 
   const snapshot = await db.registrations.get();
 
-  const bucketName = process.env.FB_STORAGE_BUCKET;
-  const bucket = bucketName ? storage.bucket(bucketName) : storage.bucket();
-
   const registrations: RegistrationWithId[] = await Promise.all(
     snapshot.docs.map(async (doc) => {
       const data = doc.data();
@@ -26,20 +25,22 @@ export default async function Page() {
 
       if (data.payment_screenshot) {
         try {
-          const file = bucket.file(data.payment_screenshot);
-          const [url] = await file.getSignedUrl({
-            action: "read",
-            expires: Date.now() + 1000 * 60 * 60 * 24, // 24 hours
+          const command = new GetObjectCommand({
+            Bucket: process.env.S3_BUCKET_NAME!,
+            Key: data.payment_screenshot,
           });
-          screenshotUrl = url;
+          screenshotUrl = await getSignedUrl(s3Client, command, {
+            expiresIn: 86400,
+          });
         } catch (error) {
-          console.error("Failed to generate signed url:", error);
+          console.error("Failed to generate MinIO signed url:", error);
         }
       }
 
       return {
         id: doc.id,
         ...data,
+        games: data.games || [],
         screenshotUrl,
       };
     }),

@@ -1,7 +1,8 @@
 "use server";
 
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 import db from "@/lib/db";
-import { storage } from "@/lib/firebase-admin";
+import { s3Client } from "@/lib/s3";
 import { getUID } from "@/lib/session";
 
 export async function PayAction(formData: FormData) {
@@ -16,17 +17,17 @@ export async function PayAction(formData: FormData) {
   }
 
   const buffer = Buffer.from(await file.arrayBuffer());
-
   const safeFilename = file.name.replace(/[^a-zA-Z0-9.\-_]/g, "");
   const fileName = `payments/${uid}-${Date.now()}-${safeFilename}`;
 
-  const bucketName = process.env.FB_STORAGE_BUCKET;
-  const bucket = bucketName ? storage.bucket(bucketName) : storage.bucket();
-  const fileRef = bucket.file(fileName);
-
-  await fileRef.save(buffer, {
-    contentType: file.type,
-  });
+  await s3Client.send(
+    new PutObjectCommand({
+      Bucket: process.env.S3_BUCKET_NAME!,
+      Key: fileName,
+      Body: buffer,
+      ContentType: file.type,
+    }),
+  );
 
   await db.registrations.doc(uid).update({
     payment_screenshot: fileName,

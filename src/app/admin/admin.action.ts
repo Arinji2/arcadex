@@ -1,11 +1,12 @@
 "use server";
 
+import { DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { registrationRejectionEmail } from "@/email/registration/reject-template";
 import db from "@/lib/db";
 import { transporter } from "@/lib/email";
-import { storage } from "@/lib/firebase-admin";
+import { s3Client } from "@/lib/s3";
 
 async function verifyAdmin() {
   const cookieStore = await cookies();
@@ -26,18 +27,19 @@ export async function rejectRegistration(uid: string) {
   const data = doc.data();
   if (!data) return;
 
-  // Attempt to delete screenshot
   if (data.payment_screenshot) {
     try {
-      const bucketName = process.env.FB_STORAGE_BUCKET;
-      const bucket = bucketName ? storage.bucket(bucketName) : storage.bucket();
-      await bucket.file(data.payment_screenshot).delete();
+      await s3Client.send(
+        new DeleteObjectCommand({
+          Bucket: process.env.S3_BUCKET_NAME!,
+          Key: data.payment_screenshot,
+        }),
+      );
     } catch (e) {
-      console.error("Could not delete screenshot or it doesn't exist", e);
+      console.error("Could not delete screenshot from MinIO", e);
     }
   }
 
-  // Send rejection email
   try {
     await transporter.sendMail({
       from: `"ArcadeX" <${process.env.EMAIL_USER}>`,
@@ -52,7 +54,6 @@ export async function rejectRegistration(uid: string) {
     console.error("Failed to send rejection email", error);
   }
 
-  // Delete document
   await db.registrations.doc(uid).delete();
   revalidatePath("/admin");
 }
