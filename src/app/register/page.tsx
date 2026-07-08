@@ -10,7 +10,6 @@ import {
 } from "@/constants";
 import { type GameItem, useCart } from "@/context/CartContext";
 import type { Registration } from "@/lib/types";
-import { EmailAction } from "./email.action";
 import { LoginAction } from "./login.action";
 
 export default function Register() {
@@ -75,15 +74,13 @@ export default function Register() {
         ign: formData.igns[item.id] || "",
       })),
       payment_status: "pending",
-      cash_free_order_id: undefined,
+      verified: false,
     };
 
     await LoginAction({ registrationData: registrationData });
 
-    await EmailAction();
-
     localStorage.removeItem(RegistrationLocalStorageKey);
-    router.push("/register/success");
+    router.push("/pay");
   };
 
   return (

@@ -8,7 +8,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const { items, setSidebarOpen, jiggle } = useCart();
 
-  const isTransactional = pathname.includes("/register");
+  const isTransactional = pathname.includes("/pay");
 
   const navLinks = [
     { label: "Levels", href: "/" },
@@ -21,7 +21,7 @@ export default function Navbar() {
       <div
         className={clsx(
           "mx-auto flex h-20 w-full max-w-7xl items-center px-container-margin",
-          isTransactional ? "justify-between" : "justify-between",
+          isTransactional ? "justify-center" : "justify-between",
         )}
       >
         <Link href="/" className="group flex flex-col">
@@ -32,47 +32,50 @@ export default function Navbar() {
             ArcadeX
           </span>
         </Link>
+        {!isTransactional && (
+          <>
+            <nav className="hidden items-center gap-6 md:flex">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={clsx(
+                    "font-headline-lg text-headline-lg uppercase transition-colors",
+                    pathname === link.href
+                      ? "border-primary border-b-4 pb-1 text-primary"
+                      : "text-on-surface hover:text-primary",
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
 
-        <nav className="hidden items-center gap-6 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
+            <button
+              type="button"
+              onClick={() => setSidebarOpen(true)}
               className={clsx(
-                "font-headline-lg text-headline-lg uppercase transition-colors",
-                pathname === link.href
-                  ? "border-primary border-b-4 pb-1 text-primary"
-                  : "text-on-surface hover:text-primary",
+                "interactive-btn relative flex items-center gap-2 rounded-lg border-thick bg-primary-container px-4 py-2 font-label-bold text-label-bold text-on-primary-container uppercase shadow-hard transition-transform",
+                {
+                  "animate-cart-jiggle": jiggle,
+                },
               )}
             >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <button
-          type="button"
-          onClick={() => setSidebarOpen(true)}
-          className={clsx(
-            "interactive-btn relative flex items-center gap-2 rounded-lg border-thick bg-primary-container px-4 py-2 font-label-bold text-label-bold text-on-primary-container uppercase shadow-hard transition-transform",
-            {
-              "animate-cart-jiggle": jiggle,
-            },
-          )}
-        >
-          <span
-            className="material-symbols-outlined"
-            style={{ fontVariationSettings: "'FILL' 1" }}
-          >
-            shopping_cart
-          </span>
-          <span className="hidden sm:inline">Cart</span>
-          {items.length > 0 && (
-            <span className="-top-2 -right-2 absolute flex h-6 w-6 items-center justify-center rounded-full border-thick bg-primary text-white text-xs">
-              {items.length}
-            </span>
-          )}
-        </button>
+              <span
+                className="material-symbols-outlined"
+                style={{ fontVariationSettings: "'FILL' 1" }}
+              >
+                shopping_cart
+              </span>
+              <span className="hidden sm:inline">Cart</span>
+              {items.length > 0 && (
+                <span className="-top-2 -right-2 absolute flex h-6 w-6 items-center justify-center rounded-full border-thick bg-primary text-white text-xs">
+                  {items.length}
+                </span>
+              )}
+            </button>
+          </>
+        )}
       </div>
     </header>
   );

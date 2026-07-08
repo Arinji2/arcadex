@@ -1,4 +1,3 @@
-//This will later change to a api route once cashfreee is integrated
 "use server";
 
 import type { GameItem } from "@/context/CartContext";
