@@ -1,6 +1,7 @@
 "use client";
 
 import { clsx } from "clsx";
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { EmailAction } from "./email.action";
 import { PayAction } from "./pay.action";
@@ -56,6 +57,7 @@ const compressImage = async (file: File): Promise<File> => {
 };
 
 export default function PayForm() {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -66,23 +68,35 @@ export default function PayForm() {
     }
   };
 
-  // Explicitly calculate boolean to avoid React 19 hydration mismatch on forms
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!file) return;
+
+    setLoading(true);
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const originalFile = formData.get("screenshot") as File;
+
+      if (originalFile && originalFile.size > 0) {
+        const compressedFile = await compressImage(originalFile);
+        formData.set("screenshot", compressedFile);
+      }
+
+      await PayAction(formData);
+      await EmailAction();
+
+      router.push("/register/success");
+    } catch (error) {
+      console.error("Submission failed:", error);
+      setLoading(false);
+    }
+  };
+
   const isDisabled = loading || file === null;
 
   return (
-    <form
-      action={async (formData) => {
-        setLoading(true);
-        const originalFile = formData.get("screenshot") as File;
-        if (originalFile && originalFile.size > 0) {
-          const compressedFile = await compressImage(originalFile);
-          formData.set("screenshot", compressedFile);
-        }
-        await PayAction(formData);
-        await EmailAction();
-      }}
-      className="flex w-full flex-col gap-4"
-    >
+    <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4">
       <div className="flex flex-col gap-1.5">
         <label
           htmlFor="screenshot"
@@ -104,6 +118,7 @@ export default function PayForm() {
 
         <button
           type="button"
+          suppressHydrationWarning
           onClick={() => fileInputRef.current?.click()}
           className="flex w-full items-center justify-between border-thick bg-white px-3 py-2 transition-all hover:bg-surface-variant focus:shadow-[4px_4px_0px_0px_#be000c] focus:outline-none"
         >
@@ -124,7 +139,7 @@ export default function PayForm() {
       <button
         type="submit"
         suppressHydrationWarning
-        disabled={isDisabled ? true : undefined}
+        disabled={isDisabled}
         className={clsx(
           "interactive-btn mt-2 flex w-full items-center justify-center gap-2 border-thick bg-primary px-6 py-3 font-headline-lg-mobile text-white text-xl uppercase transition-all duration-200",
           isDisabled

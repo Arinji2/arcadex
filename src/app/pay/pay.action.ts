@@ -1,6 +1,5 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import db from "@/lib/db";
 import { storage } from "@/lib/firebase-admin";
 import { getUID } from "@/lib/session";
@@ -34,5 +33,5 @@ export async function PayAction(formData: FormData) {
     payment_status: "paid",
   });
 
-  redirect("/register/success");
+  return { success: true };
 }
