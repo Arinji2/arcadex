@@ -2,21 +2,14 @@ import type { Registration } from "@/lib/types";
 
 export type RegistrationWithId = Registration & {
   id: string;
+  screenshotUrl?: string;
 };
 
 export const paymentOptions = [
-  {
-    value: "all",
-    label: "All",
-  },
-  {
-    value: "paid",
-    label: "Paid",
-  },
-  {
-    value: "pending",
-    label: "Pending",
-  },
+  { value: "all", label: "All Statuses" },
+  { value: "verified", label: "Verified" },
+  { value: "review", label: "Under Review" },
+  { value: "pending", label: "Pending Payment" },
 ];
 
 export function uniqueGames(data: RegistrationWithId[]) {
