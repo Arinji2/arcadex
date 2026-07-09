@@ -69,7 +69,7 @@ export default function Register() {
       name: formData.fullName,
       email: formData.email,
       mobile_num: formData.mobileNo,
-      discord_id: formData.discordId,
+      discord_id: formData.discordId ?? "",
       college_name: formData.collegeName,
       games: items.map((item) => ({
         game_id: item.id,
@@ -161,10 +161,9 @@ export default function Register() {
               className="font-label-bold text-label-bold text-on-surface uppercase"
               htmlFor="discordId"
             >
-              Discord ID <span className="text-primary">*</span>
+              Discord ID (Optional)
             </label>
             <input
-              required
               className="w-full border-thick bg-white p-3 font-body-md text-body-md text-on-surface transition-all focus:shadow-[4px_4px_0px_0px_#be000c] focus:outline-none"
               id="discordId"
               placeholder="e.g. JohnDoe"
