@@ -60,9 +60,12 @@ export default function VerificationTab({
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {pendingVerifications.map((r) => {
-        const gamesTotal = r.games.length;
-        const expectedAmount =
-          gamesTotal >= 4 ? gamesTotal * 50 : gamesTotal * 60;
+        const gamesTotal = r.games?.length || 0;
+        const expectedAmount = r.is_pubg
+          ? 200
+          : gamesTotal >= 4
+            ? gamesTotal * 50
+            : gamesTotal * 60;
         const isActionLoading = loading === r.id;
 
         return (
@@ -103,24 +106,30 @@ export default function VerificationTab({
                     ₹{expectedAmount}
                   </span>
                   <span className="font-bold text-outline text-xs uppercase">
-                    {gamesTotal} Games
+                    {r.is_pubg ? "PUBG Squad" : `${gamesTotal} Games`}
                   </span>
                 </div>
               </div>
 
               <div className="mb-4 flex flex-wrap gap-1">
-                {r.games.map((g) => {
-                  const title =
-                    GAMES.find((x) => x.id === g.game_id)?.title || g.game_id;
-                  return (
-                    <span
-                      key={g.game_id}
-                      className="rounded bg-secondary-container px-2 py-0.5 font-bold text-on-secondary-container text-xs"
-                    >
-                      {title}
-                    </span>
-                  );
-                })}
+                {r.is_pubg ? (
+                  <span className="rounded bg-secondary-container px-2 py-0.5 font-bold text-on-secondary-container text-xs">
+                    PUBG Squad
+                  </span>
+                ) : (
+                  (r.games || []).map((g) => {
+                    const title =
+                      GAMES.find((x) => x.id === g.game_id)?.title || g.game_id;
+                    return (
+                      <span
+                        key={g.game_id}
+                        className="rounded bg-secondary-container px-2 py-0.5 font-bold text-on-secondary-container text-xs"
+                      >
+                        {title}
+                      </span>
+                    );
+                  })
+                )}
               </div>
 
               <div className="mt-auto grid grid-cols-2 gap-3 pt-4">

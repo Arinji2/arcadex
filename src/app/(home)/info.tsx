@@ -13,29 +13,64 @@ export function HomeInfo() {
           <h2 className="mb-6 font-headline-xl text-headline-xl text-primary">
             Loot Pool
           </h2>
-          <ul className="space-y-4 font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">
-            <li className="flex items-center gap-4 rounded-xl border-2 border-[#222] bg-surface p-4 shadow-hard">
-              <span
-                className="material-symbols-outlined text-[32px] text-tertiary-container"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                star
-              </span>
-              1st Place: ₹250{" "}
-            </li>
-            <li className="flex items-center gap-4 rounded-xl border-2 border-[#222] bg-surface p-4 shadow-hard">
-              <span className="material-symbols-outlined text-[32px] text-outline">
-                military_tech
-              </span>
-              2nd Place: ₹150{" "}
-            </li>
-            <li className="flex items-center gap-4 rounded-xl border-2 border-[#222] bg-surface p-4 shadow-hard">
-              <span className="material-symbols-outlined text-[32px] text-primary">
-                workspace_premium
-              </span>
-              3rd Place: ₹100{" "}
-            </li>
-          </ul>
+          <div className="flex flex-col gap-8 md:flex-row">
+            <div className="flex-1">
+              <h3 className="mb-4 font-label-bold text-on-surface-variant uppercase">
+                Standard Games
+              </h3>
+              <ul className="space-y-4 font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">
+                <li className="flex items-center gap-4 rounded-xl border-2 border-[#222] bg-surface p-4 shadow-hard">
+                  <span
+                    className="material-symbols-outlined text-[32px] text-tertiary-container"
+                    style={{ fontVariationSettings: "'FILL' 1" }}
+                  >
+                    star
+                  </span>
+                  1st: ₹250{" "}
+                </li>
+                <li className="flex items-center gap-4 rounded-xl border-2 border-[#222] bg-surface p-4 shadow-hard">
+                  <span className="material-symbols-outlined text-[32px] text-outline">
+                    military_tech
+                  </span>
+                  2nd: ₹150{" "}
+                </li>
+                <li className="flex items-center gap-4 rounded-xl border-2 border-[#222] bg-surface p-4 shadow-hard">
+                  <span className="material-symbols-outlined text-[32px] text-primary">
+                    workspace_premium
+                  </span>
+                  3rd: ₹100{" "}
+                </li>
+              </ul>
+            </div>
+            <div className="flex-1">
+              <h3 className="mb-4 font-label-bold text-on-surface-variant uppercase">
+                PUBG (Squads)
+              </h3>
+              <ul className="space-y-4 font-headline-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">
+                <li className="flex items-center gap-4 rounded-xl border-2 border-[#222] bg-surface p-4 shadow-hard">
+                  <span
+                    className="material-symbols-outlined text-[32px] text-tertiary-container"
+                    style={{ fontVariationSettings: "'FILL' 1" }}
+                  >
+                    star
+                  </span>
+                  1st: ₹400{" "}
+                </li>
+                <li className="flex items-center gap-4 rounded-xl border-2 border-[#222] bg-surface p-4 shadow-hard">
+                  <span className="material-symbols-outlined text-[32px] text-outline">
+                    military_tech
+                  </span>
+                  2nd: ₹300{" "}
+                </li>
+                <li className="flex items-center gap-4 rounded-xl border-2 border-[#222] bg-surface p-4 shadow-hard">
+                  <span className="material-symbols-outlined text-[32px] text-primary">
+                    workspace_premium
+                  </span>
+                  3rd: ₹200{" "}
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
 
         <div className="relative col-span-1 mt-8 rounded-b-xl border-thick bg-secondary pt-16 shadow-hard-lg lg:col-span-4 lg:mt-0">
@@ -44,14 +79,22 @@ export function HomeInfo() {
               Entry Coin
             </span>
           </div>
-          <div className="p-6 text-center text-on-secondary">
-            <div className="mb-4 font-headline-xl text-headline-xl">₹60</div>
-            <p className="rounded-lg border-2 border-[#222] bg-secondary-fixed-dim/20 p-2 font-body-md text-body-md">
-              Per Tournament
-            </p>
+          <div className="flex flex-col gap-6 p-6 text-center text-on-secondary">
+            <div>
+              <div className="mb-2 font-headline-xl text-headline-xl">₹60</div>
+              <p className="rounded-lg border-2 border-[#222] bg-secondary-fixed-dim/20 p-2 font-body-md text-body-md">
+                Standard
+              </p>
+            </div>
+            <div>
+              <div className="mb-2 font-headline-xl text-headline-xl">₹200</div>
+              <p className="rounded-lg border-2 border-[#222] bg-secondary-fixed-dim/20 p-2 font-body-md text-body-md">
+                PUBG Squad
+              </p>
+            </div>
             <Link
               href="/games"
-              className="interactive-btn mt-6 block w-full rounded-lg border-thick bg-tertiary-fixed-dim py-4 font-label-bold text-label-bold text-on-background shadow-hard"
+              className="interactive-btn mt-2 block w-full rounded-lg border-thick bg-tertiary-fixed-dim py-4 font-label-bold text-label-bold text-on-background shadow-hard"
             >
               Insert Coin
             </Link>

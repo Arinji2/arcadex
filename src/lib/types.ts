@@ -8,6 +8,8 @@ export type Registration = {
   discord_id: string;
   games: RegistrationGame[];
   verified: boolean;
+  is_pubg?: boolean;
+  pubg_igns?: string[];
 };
 
 export type RegistrationGame = {

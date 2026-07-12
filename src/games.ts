@@ -65,14 +65,4 @@ export const GAMES: GameItem[] = [
     ignRequired: true,
     details: ["5min Blitz Chess"],
   },
-  {
-    id: "g7",
-    title: "BGMI",
-    price: 60,
-    date: "July 25",
-    time: "4 PM - 5 PM",
-    image: "/games/bgmi.jpg",
-    details: ["Battle Royale - Levik"],
-    ignRequired: true,
-  },
 ];

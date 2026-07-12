@@ -16,6 +16,7 @@ export default function Navbar() {
   const navLinks = [
     { label: "Levels", href: "/" },
     { label: "Games", href: "/games" },
+    { label: "PUBG", href: "/pubg" },
     { label: "Rules", href: "/rules" },
   ];
 

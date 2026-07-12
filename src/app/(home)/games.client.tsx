@@ -1,6 +1,7 @@
 "use client";
 import { clsx } from "clsx";
 import Image from "next/image";
+import Link from "next/link";
 import { type GameItem, useCart } from "@/context/CartContext";
 import { GAMES } from "@/games";
 
@@ -15,9 +16,48 @@ export function GamesSection() {
           {GAMES.map((game) => (
             <GameCard key={game.id} game={game} />
           ))}
+          <PubgCard />
         </div>
       </div>
     </section>
+  );
+}
+
+function PubgCard() {
+  return (
+    <div className="group relative rounded-xl border-thick bg-tertiary-container p-block-padding shadow-hard transition-transform hover:translate-y-1">
+      <div className="-top-4 -right-4 absolute rotate-12 rounded-full border-thick bg-primary px-3 py-1 font-label-bold text-label-bold text-on-primary shadow-hard">
+        SQUAD
+      </div>
+      <div className="flex w-full flex-row items-center justify-between">
+        <div className="flex w-fit flex-col items-start justify-center gap-2">
+          <h3 className="mb-2 font-headline-lg text-headline-lg text-on-tertiary-container">
+            PUBG Mobile
+          </h3>
+          <p className="mb-4 inline-block rounded border-2 border-[#222] bg-surface-container-lowest/50 px-2 py-1 font-body-md text-body-md text-on-tertiary-container">
+            July 25 • 4 PM - 5 PM
+          </p>
+        </div>
+        <Link
+          href="/pubg"
+          className="interactive-btn h-fit w-fit rounded-lg border-[#222] border-thick bg-secondary-container p-3 shadow-hard"
+        >
+          <h2 className="flex items-center gap-2 font-headline-lg-mobile text-headline-lg-mobile text-on-secondary-container">
+            <span className="material-symbols-outlined text-[28px]! md:text-[32px]!">
+              groups
+            </span>
+          </h2>
+        </Link>
+      </div>
+      <div className="relative h-48 w-full rounded-lg border-[#222] border-thick">
+        <Image
+          src="/games/pubg.jpg"
+          alt="PUBG Mobile"
+          fill
+          className="object-cover"
+        />
+      </div>
+    </div>
   );
 }
 

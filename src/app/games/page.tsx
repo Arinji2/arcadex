@@ -1,6 +1,7 @@
 "use client";
 import clsx from "clsx";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { RegistrationLocalStorageKey } from "@/constants";
 import { type GameItem, useCart } from "@/context/CartContext";
@@ -40,6 +41,52 @@ export default function GamesPage() {
             handleAdd={handleAdd}
           />
         ))}
+        <article className="group relative flex h-fit flex-col border-thick bg-surface-container p-5 shadow-hard transition-colors hover:bg-surface-variant">
+          <div className="-top-4 -left-4 -rotate-6 absolute z-10 transform border-thick bg-primary px-3 py-1 font-label-bold text-label-bold text-on-primary">
+            Day 7 • July 25
+          </div>
+          <div className="relative mb-4 aspect-video w-full overflow-hidden border-thick">
+            <Image
+              src="/games/pubg.jpg"
+              alt="PUBG Mobile"
+              fill
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <h3 className="mb-1 font-headline-lg-mobile text-headline-lg-mobile">
+            PUBG Mobile (Squads)
+          </h3>
+          <p className="mb-6 flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant">
+            <span className="material-symbols-outlined text-[16px]">
+              schedule
+            </span>{" "}
+            4 PM - 5 PM
+          </p>
+
+          <ul className="mb-4 flex list-disc flex-col gap-2 pl-4 font-body-sm text-body-sm text-on-surface-variant">
+            <li>Squad Tournament</li>
+            <li>Max 4 Players per Squad</li>
+            <li>Mobile Only (No Emulators)</li>
+          </ul>
+
+          <div className="mt-auto flex items-center justify-between">
+            <div className="flex items-baseline gap-2">
+              <span className="font-headline-lg-mobile text-headline-lg-mobile text-primary">
+                ₹200
+              </span>
+              <span className="font-body-sm text-body-sm text-on-surface-variant">
+                / squad
+              </span>
+            </div>
+
+            <Link
+              href="/pubg"
+              className="border-thick bg-secondary px-4 py-2 font-label-bold text-label-bold text-on-secondary uppercase shadow-hard transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
+            >
+              REGISTER
+            </Link>
+          </div>
+        </article>
       </div>
     </div>
   );

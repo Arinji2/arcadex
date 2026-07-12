@@ -17,13 +17,17 @@ export default async function Pay() {
   const snapshot = await db.registrations.doc(uid).get();
   const registrationData = snapshot.data();
 
-  if (!registrationData || registrationData.games.length === 0) {
+  if (
+    !registrationData ||
+    (registrationData.games.length === 0 && !registrationData.is_pubg)
+  ) {
     redirect("/");
   }
 
-  const totalGames = registrationData.games.length;
-  const originalTotal = totalGames * 60;
-  const discount = totalGames >= 4 ? totalGames * 10 : 0;
+  const totalGames = registrationData.games?.length || 0;
+  const originalTotal = registrationData.is_pubg ? 200 : totalGames * 60;
+  const discount =
+    !registrationData.is_pubg && totalGames >= 4 ? totalGames * 10 : 0;
   const finalTotal = originalTotal - discount;
   const paymentImage = PaymentMap[finalTotal.toString()];
 
@@ -49,20 +53,29 @@ export default async function Pay() {
             </div>
 
             <div className="mt-2 flex flex-col gap-3 border-[#222] border-b-2 border-dashed pb-4 font-body-sm text-body-sm">
-              {registrationData.games.map((game) => {
-                const gameInfo = GAMES.find((g) => g.id === game.game_id);
-                return (
-                  <div
-                    key={game.game_id}
-                    className="flex items-center justify-between"
-                  >
-                    <span className="truncate pr-2 font-label-bold text-on-surface-variant uppercase">
-                      {gameInfo?.title || game.game_id}
-                    </span>
-                    <span className="font-label-bold">₹60</span>
-                  </div>
-                );
-              })}
+              {registrationData.is_pubg ? (
+                <div className="flex items-center justify-between">
+                  <span className="truncate pr-2 font-label-bold text-on-surface-variant uppercase">
+                    PUBG Squad
+                  </span>
+                  <span className="font-label-bold">₹200</span>
+                </div>
+              ) : (
+                registrationData.games.map((game) => {
+                  const gameInfo = GAMES.find((g) => g.id === game.game_id);
+                  return (
+                    <div
+                      key={game.game_id}
+                      className="flex items-center justify-between"
+                    >
+                      <span className="truncate pr-2 font-label-bold text-on-surface-variant uppercase">
+                        {gameInfo?.title || game.game_id}
+                      </span>
+                      <span className="font-label-bold">₹60</span>
+                    </div>
+                  );
+                })
+              )}
             </div>
 
             <div className="flex flex-col gap-2 pt-4 font-body-sm text-body-sm">

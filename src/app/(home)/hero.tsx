@@ -56,11 +56,11 @@ export function Hero() {
         </Link>
 
         <div className="mt-4 flex flex-col gap-4 sm:flex-row md:hidden">
-          <div className="-rotate-3 rounded border-thick bg-primary px-4 py-2 font-label-bold text-label-bold text-on-primary shadow-hard">
-            Prizes: ₹250/₹150/₹100
+          <div className="-rotate-3 rounded border-thick bg-primary px-4 py-2 font-label-bold text-label-bold text-on-primary shadow-hard text-center">
+            Prizes upto ₹400
           </div>
-          <div className="rotate-3 rounded border-thick bg-tertiary-fixed px-4 py-2 font-label-bold text-label-bold text-on-tertiary-fixed shadow-hard">
-            Entry: ₹60
+          <div className="rotate-3 rounded border-thick bg-tertiary-fixed px-4 py-2 font-label-bold text-label-bold text-on-tertiary-fixed shadow-hard text-center">
+            Entry from ₹60
           </div>
         </div>
       </div>

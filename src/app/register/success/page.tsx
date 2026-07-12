@@ -137,7 +137,27 @@ export default async function SuccessPage() {
         </div>
       </div>
 
-      <SelectedGames games={registrationData.games} />
+      {registrationData.is_pubg ? (
+        <div className="flex w-full max-w-2xl flex-col items-center justify-center gap-4">
+          <h2 className="mb-4 font-headline-lg-mobile text-headline-lg-mobile text-primary uppercase">
+            PUBG Squad Details
+          </h2>
+          <div className="w-full border-thick bg-surface-container p-6 shadow-hard">
+            <h3 className="mb-4 font-label-bold text-lg uppercase">
+              Team Members
+            </h3>
+            <ul className="list-disc pl-5 font-body-md text-on-surface-variant">
+              {registrationData.pubg_igns?.map((ign: string, idx: number) => (
+                <li key={ign}>
+                  Player {idx + 1}: {ign}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ) : (
+        <SelectedGames games={registrationData.games} />
+      )}
     </div>
   );
 }

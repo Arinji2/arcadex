@@ -35,11 +35,19 @@ export default function RegistrationDashboard({ registrations }: Props) {
         return false;
       if (payment === "pending" && r.payment_status !== "pending") return false;
 
-      if (game !== "all" && !r.games.some((g) => g.game_id === game)) {
-        return false;
+      if (game !== "all") {
+        if (game === "PUBG") {
+          if (!r.is_pubg) return false;
+        } else {
+          if (!r.games || !r.games.some((g) => g.game_id === game))
+            return false;
+        }
       }
 
       if (!q) return true;
+
+      const pubgMatch =
+        r.is_pubg && r.pubg_igns?.some((ign) => ign.toLowerCase().includes(q));
 
       return (
         r.name.toLowerCase().includes(q) ||
@@ -47,11 +55,13 @@ export default function RegistrationDashboard({ registrations }: Props) {
         r.mobile_num.includes(q) ||
         r.discord_id.toLowerCase().includes(q) ||
         r.college_name.toLowerCase().includes(q) ||
-        r.games.some(
-          (g) =>
-            g.ign.toLowerCase().includes(q) ||
-            g.game_id.toLowerCase().includes(q),
-        )
+        !!pubgMatch ||
+        (r.games &&
+          r.games.some(
+            (g) =>
+              g.ign.toLowerCase().includes(q) ||
+              g.game_id.toLowerCase().includes(q),
+          ))
       );
     });
   }, [registrations, search, payment, game]);

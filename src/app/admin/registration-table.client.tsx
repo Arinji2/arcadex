@@ -118,14 +118,20 @@ export default function RegistrationTable({ registrations }: Props) {
                     </td>
                     <td className="p-4">
                       <div className="flex flex-wrap gap-1">
-                        {registration.games.map((game) => (
-                          <span
-                            key={game.game_id}
-                            className="rounded border border-[#222] bg-surface px-2 py-1 font-bold text-xs"
-                          >
-                            {game.game_id}
+                        {registration.is_pubg ? (
+                          <span className="rounded border border-[#222] bg-surface px-2 py-1 font-bold text-xs">
+                            PUBG
                           </span>
-                        ))}
+                        ) : (
+                          (registration.games || []).map((game) => (
+                            <span
+                              key={game.game_id}
+                              className="rounded border border-[#222] bg-surface px-2 py-1 font-bold text-xs"
+                            >
+                              {game.game_id}
+                            </span>
+                          ))
+                        )}
                       </div>
                     </td>
                     <td className="p-4">
@@ -159,17 +165,29 @@ export default function RegistrationTable({ registrations }: Props) {
                                 IGNs
                               </div>
                               <div className="space-y-2">
-                                {registration.games.map((game) => (
-                                  <div
-                                    key={game.game_id}
-                                    className="flex items-center justify-between rounded border-2 border-[#222] bg-white p-2 text-sm"
-                                  >
-                                    <span className="font-bold">
-                                      {game.game_id}
-                                    </span>
-                                    <span>{game.ign || "-"}</span>
-                                  </div>
-                                ))}
+                                {registration.is_pubg
+                                  ? registration.pubg_igns?.map((ign, i) => (
+                                      <div
+                                        key={ign}
+                                        className="flex items-center justify-between rounded border-2 border-[#222] bg-white p-2 text-sm"
+                                      >
+                                        <span className="font-bold">
+                                          Player {i + 1}
+                                        </span>
+                                        <span>{ign}</span>
+                                      </div>
+                                    ))
+                                  : (registration.games || []).map((game) => (
+                                      <div
+                                        key={game.game_id}
+                                        className="flex items-center justify-between rounded border-2 border-[#222] bg-white p-2 text-sm"
+                                      >
+                                        <span className="font-bold">
+                                          {game.game_id}
+                                        </span>
+                                        <span>{game.ign || "-"}</span>
+                                      </div>
+                                    ))}
                               </div>
                             </div>
                           </div>
@@ -262,7 +280,7 @@ function Info({ label, value }: { label: string; value: string }) {
   return (
     <div>
       <div className="mb-1 font-label-bold text-outline uppercase">{label}</div>
-      <div className="font-medium">{value}</div>
+      <div className="font-medium">{value || "-"}</div>
     </div>
   );
 }

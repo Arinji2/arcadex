@@ -385,15 +385,15 @@ export default function RulesPage() {
             </div>
           </details>
 
-          {/* BGMI */}
+          {/* PUBG */}
           <details className="group border-thick bg-surface shadow-hard [&_summary::-webkit-details-marker]:hidden">
             <summary className="flex cursor-pointer items-center justify-between border-transparent border-b-4 bg-surface-container-highest p-4 transition-colors hover:bg-tertiary-container group-open:border-[#222222] md:p-6">
               <div className="flex items-center gap-4">
                 <div className="flex h-10 w-10 items-center justify-center border-thick bg-tertiary-container font-bold font-rubik text-black md:h-12 md:w-12">
-                  B
+                  P
                 </div>
                 <span className="font-headline-lg-mobile text-headline-lg-mobile text-xl uppercase md:text-2xl">
-                  BGMI
+                  PUBG (Squads)
                 </span>
               </div>
               <span className="material-symbols-outlined text-3xl transition-transform group-open:rotate-180">
@@ -409,7 +409,7 @@ export default function RulesPage() {
                   check_box
                 </span>
                 <span className="font-body-md text-body-md text-on-surface-variant">
-                  Have the official BGMI app downloaded, updated, and logged in.
+                  Have the official PUBG app downloaded, updated, and logged in.
                 </span>
               </div>
               <div className="flex items-start gap-3">

@@ -61,7 +61,7 @@ export default function Filters({
         <option value="all">ALL GAMES</option>
         {games.map((g) => (
           <option key={g} value={g}>
-            {g}
+            {g === "PUBG" ? "PUBG SQUAD" : g}
           </option>
         ))}
       </select>

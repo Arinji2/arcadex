@@ -13,9 +13,13 @@ export const paymentOptions = [
 ];
 
 export function uniqueGames(data: RegistrationWithId[]) {
-  return [
-    ...new Set(data.flatMap((r) => r.games.map((g) => g.game_id))),
-  ].sort();
+  const games = new Set(
+    data.flatMap((r) => r.games?.map((g) => g.game_id) || []),
+  );
+  if (data.some((r) => r.is_pubg)) {
+    games.add("PUBG");
+  }
+  return [...games].sort();
 }
 
 export function uniqueColleges(data: RegistrationWithId[]) {

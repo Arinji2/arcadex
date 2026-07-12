@@ -2,7 +2,7 @@ import type { GameItem } from "@/context/CartContext";
 import type { Registration } from "@/lib/types";
 
 type RegistrationEmailProps = Omit<Registration, "games"> & {
-  games: GameItem[];
+  games?: GameItem[];
 };
 
 export function registrationConfirmationEmail({
@@ -14,9 +14,14 @@ export function registrationConfirmationEmail({
   whatsappLink: string;
   websiteUrl: string;
 }) {
-  const { name } = registrationData;
-  const gamesTotal = registrationData.games.length;
-  const amountPaid = gamesTotal >= 4 ? gamesTotal * 50 : gamesTotal * 60;
+  const { name, is_pubg } = registrationData;
+  const gamesTotal = registrationData.games ? registrationData.games.length : 0;
+  const amountPaid = is_pubg
+    ? 200
+    : gamesTotal >= 4
+      ? gamesTotal * 50
+      : gamesTotal * 60;
+
   return `
 <body
   style="
@@ -169,9 +174,50 @@ export function registrationConfirmationEmail({
             font-size:22px;
           "
         >
-          Registered Games
+          ${is_pubg ? "PUBG Squad Details" : "Registered Games"}
         </h3>
 
+        ${
+          is_pubg
+            ? `
+        <table
+          width="100%"
+          cellpadding="14"
+          cellspacing="0"
+          style="
+            border-collapse:collapse;
+            border:1px solid #e7bdb7;
+            border-radius:12px;
+            overflow:hidden;
+          "
+        >
+          <tr
+            style="
+              background:#be000c;
+              color:white;
+            "
+          >
+            <th align="left">Player</th>
+            <th align="left">IGN</th>
+          </tr>
+
+          ${(registrationData.pubg_igns || [])
+            .map(
+              (ign, idx) => `
+              <tr style="background:#ffffff;">
+                <td style="border-top:1px solid #f4d3ce;font-weight:600;">
+                  Player ${idx + 1}
+                </td>
+                <td style="border-top:1px solid #f4d3ce;">
+                  ${ign}
+                </td>
+              </tr>
+            `,
+            )
+            .join("")}
+        </table>
+        `
+            : `
         <table
           width="100%"
           cellpadding="14"
@@ -194,7 +240,7 @@ export function registrationConfirmationEmail({
             <th align="left">Time</th>
           </tr>
 
-          ${registrationData.games
+          ${(registrationData.games || [])
             .map(
               (game) => `
               <tr style="background:#ffffff;">
@@ -214,6 +260,8 @@ export function registrationConfirmationEmail({
             )
             .join("")}
         </table>
+        `
+        }
 
         <table
           width="100%"
