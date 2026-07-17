@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment, useMemo, useState } from "react";
+import { GAMES } from "@/games";
 import type { RegistrationWithId } from "./admin-utils";
 
 type Props = {
@@ -123,14 +124,19 @@ export default function RegistrationTable({ registrations }: Props) {
                             PUBG
                           </span>
                         ) : (
-                          (registration.games || []).map((game) => (
-                            <span
-                              key={game.game_id}
-                              className="rounded border border-[#222] bg-surface px-2 py-1 font-bold text-xs"
-                            >
-                              {game.game_id}
-                            </span>
-                          ))
+                          (registration.games || []).map((game) => {
+                            const gameName =
+                              GAMES.find((g) => g.id === game.game_id)?.title ||
+                              game.game_id;
+                            return (
+                              <span
+                                key={game.game_id}
+                                className="rounded border border-[#222] bg-surface px-2 py-1 font-bold text-xs"
+                              >
+                                {`${gameName} (${game.game_id})`}
+                              </span>
+                            );
+                          })
                         )}
                       </div>
                     </td>
@@ -177,17 +183,22 @@ export default function RegistrationTable({ registrations }: Props) {
                                         <span>{ign}</span>
                                       </div>
                                     ))
-                                  : (registration.games || []).map((game) => (
-                                      <div
-                                        key={game.game_id}
-                                        className="flex items-center justify-between rounded border-2 border-[#222] bg-white p-2 text-sm"
-                                      >
-                                        <span className="font-bold">
-                                          {game.game_id}
-                                        </span>
-                                        <span>{game.ign || "-"}</span>
-                                      </div>
-                                    ))}
+                                  : (registration.games || []).map((game) => {
+                                      const gameName =
+                                        GAMES.find((g) => g.id === game.game_id)
+                                          ?.title || game.game_id;
+                                      return (
+                                        <div
+                                          key={game.game_id}
+                                          className="flex items-center justify-between rounded border-2 border-[#222] bg-white p-2 text-sm"
+                                        >
+                                          <span className="font-bold">
+                                            {gameName}
+                                          </span>
+                                          <span>{game.ign || "-"}</span>
+                                        </div>
+                                      );
+                                    })}
                               </div>
                             </div>
                           </div>
